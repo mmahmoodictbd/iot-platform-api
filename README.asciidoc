@@ -1,0 +1,4 @@
+# IOT Dashboard APIs
+
+##### Motivation
+This project was an assignment. Implemented code would be a nice example of real-time IOT events and how dashboard APIs capture and present data.
