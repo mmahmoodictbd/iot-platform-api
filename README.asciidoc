@@ -1,4 +1,36 @@
 # IOT Dashboard APIs
 
-##### Motivation
-This project was an assignment. Implemented code would be a nice example of real-time IOT events and how dashboard APIs capture and present data.
+
+### Motivation
+
+This project was an assignment. Implemented code would be a nice example of real-time IoT events and how dashboard APIs capture and present data.
+
+
+image::docs/images/sequence-diagram.png[sequence-diagram screenshot]
+
+### Design Decisions
+
+- Authentication and authorization is not taking into consideration. LoggedInUserService.java provides mocked data.
+
+- When it comes to making software design decisions for IoT devices, it’s important to fit your functional requirements within the capabilities of resource-constrained devices.
+
+  * Communication through two protocols: MQTT, HTTP and Apache Kafka
+  * For assignment purpose, I picked HTTP.
+  * Good to read:
+    https://cloud.google.com/blog/products/iot-devices/http-vs-mqtt-a-tale-of-two-iot-protocols[article 1]
+    https://medium.com/mqtt-buddy/mqtt-vs-http-which-one-is-the-best-for-iot-c868169b3105[article 2]
+    https://stackoverflow.com/questions/37391827/what-is-the-difference-between-mqtt-broker-and-apache-kafka[article 3]
+
+- Data stream from IoT devices collected by REST API.
+
+  * Eventually put to Apache Kafka.
+  * Persisted in storage.
+
+- Application has both Apache Kafka event producer and consumer. Separate microservice could make it more scalable.
+
+  * Collector REST API endpoint produce event.
+  * Reporting/Metrics collector services consume events.
+
+- InfluxDB is chosen because it well suited for time series data. Fast time range query makes it good choose. Caching on top of service layer could bring more speed to the APIs.
+
+

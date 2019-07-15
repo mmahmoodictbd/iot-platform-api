@@ -1,0 +1,31 @@
+@startuml
+
+actor "Authenticated Device" as DEVICE
+participant "Web APIs" as WebAPIs
+participant TemperatureSensorDataCollectorService as TSDCS
+database "Apache Kafka" as KAFKA
+participant TemperatureSensorDataPersistenceService as TSDPS
+participant TemperatureSensorDataReportingService as TSDRS
+database "InfluxDB repository" as DomainDataStore
+
+== IoT data collection ==
+
+DEVICE -> WebAPIs : Temperature data\nPOST /temperatures\nPOST /batch/temperatures
+WebAPIs -> TSDCS
+TSDCS --> KAFKA : publish record
+TSDCS -> WebAPIs : success status body
+WebAPIs -> DEVICE : HTTP 2xx
+KAFKA --> TSDPS : listen and persist data
+TSDPS -> DomainDataStore : save data in DB
+
+
+== Reporting ==
+
+DEVICE -> WebAPIs : Fetching Aggregated Temperature data\nGET /temperatures
+WebAPIs -> TSDPS
+TSDPS -> DomainDataStore
+TSDPS -> WebAPIs : aggregated data
+WebAPIs -> DEVICE : HTTP OK
+
+
+@enduml
