@@ -1,6 +1,7 @@
 ### Common
 
 spring:
+
   application:
     name: IotDashboardAPI
   profiles:
@@ -9,6 +10,29 @@ spring:
     add-mappings: false
   mvc:
     throw-exception-if-no-handler-found: true
+
+app:
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: iot
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: com.unloadbrain.assignement.qardio.util.TemperatureSensorDataMessageDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: com.unloadbrain.assignement.qardio.util.TemperatureSensorDataMessageSerializer
+    topic:
+      temperature-sensor: TrackTemperature
+
+  influxdb:
+    url: http://localhost:8086
+    user: admin
+    pass: admin
+    database: sensordata
+    retention-policy: autogen
+    read-timeout-in-seconds: 100
 
 logging:
   level:
