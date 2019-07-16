@@ -52,7 +52,7 @@ public class BaseExceptionHandlerIT {
 
         doThrow(new RuntimeException("Something bad")).when(sensorDataCollectorServiceMock).collect(any());
 
-        mockMvc.perform(post("/temperature"))
+        mockMvc.perform(post("/temperatures"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isInternalServerError())
                 .andExpect(jsonPath("$.code").value("INTERNAL_SERVER_ERROR"))
