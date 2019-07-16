@@ -160,9 +160,12 @@ mvn org.pitest:pitest-maven:mutationCoverage
 ```
 
 ### Improvements to make
+- Improve architectural design, completed the project in 12 hours.
+- Use MQTT as default protocol, put data events directly to Apache Kafka.
 - Build docker image (plugin already added in the pom).
 - Generate and check OWASP report.
 - Improve code coverage.
+  * Apache Kafka topic listener code is not covered with tests.
 
 
 ### Copyright & License
