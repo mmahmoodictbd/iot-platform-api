@@ -3,7 +3,7 @@
 spring:
 
   application:
-    name: IotDashboardAPI
+    name: IotPlatformAPI
   profiles:
     active: dev
   resources:

@@ -22,9 +22,9 @@ TSDPS -> DomainDataStore : save data in DB
 == Reporting ==
 
 DEVICE -> WebAPIs : Fetching Aggregated Temperature data\nGET /temperatures
-WebAPIs -> TSDPS
-TSDPS -> DomainDataStore
-TSDPS -> WebAPIs : aggregated data
+WebAPIs -> TSDRS
+TSDRS -> DomainDataStore
+TSDRS -> WebAPIs : aggregated data
 WebAPIs -> DEVICE : HTTP OK
 
 
