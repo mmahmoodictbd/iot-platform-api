@@ -129,9 +129,6 @@ public class TemperatureSensorDataCollectorServiceTest {
 
         // Given
 
-        ArgumentCaptor<ListenableFutureCallback> callbackArgumentCaptor
-                = ArgumentCaptor.forClass(ListenableFutureCallback.class);
-
         when(loggedInUserService.getLoggedInDeviceId()).thenReturn("1234");
 
         ListenableFuture futureMock = mock(ListenableFuture.class);
@@ -158,9 +155,6 @@ public class TemperatureSensorDataCollectorServiceTest {
             throws ExecutionException, InterruptedException {
 
         // Given
-
-        ArgumentCaptor<ListenableFutureCallback> callbackArgumentCaptor
-                = ArgumentCaptor.forClass(ListenableFutureCallback.class);
 
         when(loggedInUserService.getLoggedInDeviceId()).thenReturn("1234");
 
