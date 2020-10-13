@@ -43,7 +43,7 @@
         <spring-kafka.version>2.2.7.RELEASE</spring-kafka.version>
         <influxdb-java.version>2.15</influxdb-java.version>
 
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <mockito-core.version>2.25.0</mockito-core.version>
         <rest-assured.version>3.3.0</rest-assured.version>
         <hamcrest.version>2.1</hamcrest.version>
